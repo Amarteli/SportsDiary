@@ -8,13 +8,7 @@ var databaseHandler = {
             1000000);
         this.db.transaction(
             function (tx) {
-                tx.executeSql(
-                    "drop table if  exists SportDiary.diarydata",
-                    [],
-                    function (tx, results) { },
-                    function (tx, error) {
-                        console.log("Error while removing the table: " + error.message);
-                    })
+                
                 //Run SQL Here
                 tx.executeSql(
                     "create table if not exists userdata(_id int primary key, username text, passwords text)",
