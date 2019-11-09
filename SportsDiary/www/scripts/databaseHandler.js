@@ -11,7 +11,7 @@ var databaseHandler = {
                 
                 //Run SQL Here
                 tx.executeSql(
-                    "create table if not exists userdata(_id int primary key, username text, passwords text)",
+                    "create table if not exists userdata( username text primary key, passwords text)",
                 [],
                     function (tx, results) { },
                     function (tx, error) {

@@ -4,14 +4,15 @@
         databaseHandler.db.transaction(
             function (tx) {
                 tx.executeSql(                 
-                    "Select * From userdata Where username = " + usrname + " And passwords = " + psswords ,
+                    "Select * From userdata Where userdata.username = '" + usrname + "' And userdata.passwords = '" + psswords + "'",
 
                     function (tx, results) {
-                        if (results.rows.length > 1 
+                        return true 
                         },
                     function (tx, error) {
                         var r = confirm("login error: " + error.message );
                         console.log("login error: " + error.message);
+                        return false
                     }
                 );
             },

@@ -11,6 +11,7 @@ function toRegister() {
 }
 
 function loginUserdata() {
+
     var username = $("#txtUsername").val();
     var passwords = $("#txtPasswords").val();
     if (!username) {
@@ -20,7 +21,7 @@ function loginUserdata() {
     } else {
         var r = confirm("Username: " + username + "\n" + "Passwords: " + passwords);
         if (r == true) {
-            loginHandler.loginUser(username, passwords);
+            var ok = loginHandler.loginUser( username, passwords);
             $("#txtPasswords").val("");
             $("#txtRowid").val("");
             sessionStorage.setItem("user_info", username);
@@ -53,7 +54,7 @@ function addUserdata() {
 }
 
 function addSportdata() {
-    var username = "Ari";
+    var username = sessionStorage.getItem("user_info");
     var sport = $("#txtSport").val();
     var place = $("#txtPlace").val();
     var sdate = $("#txtDate").val();
@@ -64,12 +65,8 @@ function addSportdata() {
     } else if (!sdate) {
         alert("Date is required");
     } else {
-        alert("addSportdata menossa");
+        alert("addSportdata: " + username);
         sportDataHandler.addAction(username, sport, place, sdate, stime);
-            $("#txtSport").val("");
-            $("#txtPlace").val("");
-            $("#txtDate").val("");
-            $("#txtTime").val("");
-        
+                    
     }
 }
