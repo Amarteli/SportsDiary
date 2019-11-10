@@ -14,26 +14,31 @@ function loginUserdata() {
 
     var username = $("#txtUsername").val();
     var passwords = $("#txtPasswords").val();
+    sessionStorage.setItem("user_info", "");
     if (!username) {
         alert("Username is required");
     } else if (!passwords) {
         alert("Password is required");
     } else {
-        var r = confirm("Username: " + username + "\n" + "Passwords: " + passwords);
+        //var r = confirm("Username: " + username + "\n" + "Passwords: " + passwords);
+        var r = true;
         if (r == true) {
-            var ok = loginHandler.loginUser( username, passwords);
+            loginHandler.loginUser(username, passwords);
+            
             $("#txtPasswords").val("");
             $("#txtRowid").val("");
-            sessionStorage.setItem("user_info", username);
-            sessionStorage.setItem("pwd_info", passwords);
-            $.mobile.changePage("index.html");
+            var nameinfo = sessionStorage.getItem("user_info");
+            
+            if (nameinfo.length > 0) {
+                
+                $.mobile.changePage("index.html");
+            }
         }
     }
 }
 
 //Adding item in table
 function addUserdata() {
-    
     var username = $("#txtUsername").val();
     var passwords = $("#txtPasswords").val();
     if (!username) {
@@ -47,7 +52,7 @@ function addUserdata() {
             $("#txtPasswords").val("");
             $("#txtRowid").val("");
             sessionStorage.setItem("user_info", username);
-            sessionStorage.setItem("pwd_info", passwords);
+            
             $.mobile.changePage("index.html");
         }
     }
@@ -65,8 +70,24 @@ function addSportdata() {
     } else if (!sdate) {
         alert("Date is required");
     } else {
-        alert("addSportdata: " + username);
+       
         sportDataHandler.addAction(username, sport, place, sdate, stime);
                     
     }
+}
+
+function getSportdata() {
+   
+    var username = sessionStorage.getItem("user_info");
+    
+    getSportHandler.getSportData(username);
+    
+}
+
+
+function showData(ind) {
+    var username = sessionStorage.getItem("user_info");
+
+    getSportHandler.showRowData(username, ind);
+
 }
