@@ -8,10 +8,10 @@
                      [usrname, psswords],
                      function (tx, results) {
                          if (results.rows.length > 0) {
-                             alert("loghandler " + usrname);
+                             //alert("loghandler " + usrname);
                              sessionStorage.setItem("user_info", usrname);
                              var nameinfo = sessionStorage.getItem("user_info");
-                             alert("loginhandler " + nameinfo + nameinfo.length);
+                             //alert("loginhandler " + nameinfo + nameinfo.length);
                              $.mobile.changePage("index.html");
                          }
                         },
