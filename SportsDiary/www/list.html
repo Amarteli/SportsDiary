@@ -2,30 +2,80 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" />
-    <title>Register</title>
+    <!-- Include meta tag to ensure proper rendering and touch zooming -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include jQuery Mobile stylesheets -->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+    <!-- Include the jQuery library -->
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- Include the jQuery Mobile library -->
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <!-- Updated CSS and JavaScript ref -->
+    <link rel="stylesheet" type="text/css" href="mobileui/style.css">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="/scripts/databaseHandler.js"></script>
+    <script type="text/javascript" src="/scripts/pwdHandler.js"></script>
+    <script type="text/javascript" src="/scripts/loginHandler.js"></script>
+    <script type="text/javascript" src="/scripts/getSportHandler.js"></script>
+    <script type="text/javascript" src="/scripts/sportDataHandler.js"></script>
+    <script type="text/javascript" src="/mobileui/mobileui.js"></script>
+    <script type="text/javascript" src="/scripts/index.js"></script>
+    <title>List</title>
+
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *">
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <!--  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"> -->
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+
+
 </head>
-<body>
+<body  class="cover vertical-align-center blue-grey-600 align-center blend-soft-light">
+
     <div data-role="page" id="registerpage">
-
-        <div data-role="header" data-position="fixed">
-
-            <h1>List</h1>
+        <div data-role="panel" id="registerPagePanel">
+            <h1>Menu</h1>
+            <ul data-role="listview" data-inset="true">
+                <li data-role="list-divider">Sport data Management</li>
+                <li data-icon="plus"><a href="index.html">Add</a></li>
+                <li data-icon="grid"><a href="#list.html">List</a></li>
+            </ul>
         </div>
+        <div data-role="header" data-position="fixed">
+            <a href="#registerPagePanel"
+               class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all uishadow"></a>
+            <h1>List</h1>
+
+        </div>
+
+        
         <div data-role="main" class="ui-content">
             <form>
                 <div class="ui-field-contain">
-                    <label for="txtSport">Sport type:</label>
-                    <input type="text" id="txtSport" data-clear-btn="true" />
-                    <label for="txtPlace">Place:</label>
-                    <input type="text" id="txtPlace" data-clear-btn="true" />
-                    <label for="txtDate">Date:</label>
-                    <input type="text" id="txtDate" data-clear-btn="true" />
-                    <label for="txtTime">Time used in minutes:</label>
-                    <input type="text" id="txtTime" data-clear-btn="true" />
+                    <label for="txtList">Sport list:</label>
+                    <table id="txtList" class="swiper-container"></table>
+
+                </div>
+            </form>
+            <form>
+                <div class="ui-field-contain">
+                    <label for="showSport">Sport type:</label>
+                    <input type="text" id="showSport" data-clear-btn="true" />
+                    <label for="showPlace">Place:</label>
+                    <input type="text" id="showPlace" data-clear-btn="true" />
+                    <label for="showDate">Date:</label>
+                    <input type="text" id="showDate" data-clear-btn="true" />
+                    <label for="showTime">Time used in minutes:</label>
+                    <input type="text" id="showTime" data-clear-btn="true" />
                     <label for="btnAdd"></label>
                     <a class="ui-btn ui-icon-plus ui-btn-icon-left"
-                       id="btnAdd" onclick="">Add</a>
+                       id="btnAdd" onclick="getSportdata()">Select</a>
                 </div>
             </form>
         </div>
