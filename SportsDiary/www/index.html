@@ -45,6 +45,7 @@
                 <li data-role="list-divider">Sport data Management</li>
                 <li data-icon="plus"><a href="#index.html">Add</a></li>
                 <li data-icon="grid"><a href="list.html" >List</a></li>
+                <li data-icon="back"><a href="login.html">Log out</a></li>
             </ul>
         </div>
         <div data-role="header" data-position="fixed">
@@ -54,7 +55,7 @@
             
         </div>
         <div data-role="main" class="ui-content">
-            <form>
+            <form id="sports">
                 <div class="ui-field-contain">
                     <label for="txtSport">Sport type:</label>
                     <input type="text" id="txtSport" data-clear-btn="true" />
@@ -67,6 +68,8 @@
                     <label for="btnAdd"></label>
                     <a class="ui-btn ui-icon-plus ui-btn-icon-left"
                        id="btnAdd" onclick="addSportdata()">Add</a>
+                    <div class="space-huge"></div>
+                    <a class="ui-btn" id="btnRst" onclick="resetForm()">Clear Form</a>
                 </div>
             </form>
         </div>
